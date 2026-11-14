@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#101619">
+  <link rel="icon" href="data:,">
+  <meta name="description" content="A neon-soaked open-world patrol adventure. Track down car thieves, make safe arrests, and earn your badge.">
+  <title>Night Shift — Harbor City Patrol</title>
+  <link rel="preload" href="vendor/fonts/BebasNeue-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="game" aria-label="Night Shift open-world patrol game">
+    <canvas id="world" aria-label="3D Harbor City"></canvas>
+
+    <section id="title-screen" class="title-screen">
+      <header class="topbar">
+        <a class="wordmark" href="#" aria-label="Night Shift home"><span class="brand-star">✳</span> AFTER<span class="brand-light">HOURS</span><i class="brand-slash"></i><small>HARBOR CITY</small></a>
+        <div class="edition">OPEN WORLD PATROL <span>—</span> 01:42 AM</div>
+        <div class="live-pill"><span class="live-dot"></span> DISPATCH ONLINE</div>
+      </header>
+      <div class="title-content">
+        <div class="eyebrow"><span class="eyebrow-line"></span> HARBOR CITY POLICE DEPARTMENT <span class="eyebrow-line"></span></div>
+        <h1>THE CITY<br>DOESN’T <em>SLEEP.</em></h1>
+        <p class="intro">A quiet shift just got interesting. Car thieves are working the waterfront—track them down, bring them in, and earn your place on the force.</p>
+        <button id="start-button" class="start-button" type="button"><span class="button-icon">▶</span><span>START YOUR PATROL</span><span class="button-arrow">↗</span></button>
+        <div class="start-note"><span class="keycap">W A S D</span> TO MOVE <span class="note-sep">·</span> <span class="keycap">MOUSE</span> TO LOOK</div>
+      </div>
+      <div class="title-footer">
+        <div class="mission-card"><div class="mission-symbol">⌖</div><div><span class="card-label">TONIGHT’S CALL</span><strong>VEHICLE THEFTS</strong><small>Old Harbor District <b>·</b> 3 suspects reported</small></div><span class="card-status"><i></i> ACTIVE</span></div>
+        <div class="briefing"><span class="briefing-mark">01</span><span>NON-LETHAL FORCE<br>ONLY. BRING THEM IN.</span></div>
+        <div class="city-stamp">HARBOR CITY <span>EST. 1987</span><b>HC / 07</b></div>
+      </div>
+      <div class="title-grain"></div>
+    </section>
+
+    <section id="hud" class="hud hidden" aria-live="polite">
+      <header class="hud-top">
+        <div class="hud-brand"><span class="badge-icon">✳</span><div><strong>AFTER<span>HOURS</span></strong><small>HARBOR CITY · NIGHT PATROL</small></div></div>
+        <div class="dispatch"><span class="dispatch-pulse"></span><div><small>DISPATCH</small><strong id="dispatch-text">UNIT 07, SUSPECTS REPORTED NEAR THE WATERFRONT.</strong></div></div>
+        <div class="clock-block"><span id="clock">01:42</span><small>AM&nbsp; <i>•</i>&nbsp; 68°F</small></div>
+      </header>
+      <div class="mission-panel"><div class="mission-icon">⌖</div><div class="mission-info"><small>ACTIVE CALL <span>01</span></small><strong>VEHICLE THEFT</strong><span id="objective">Locate suspects and make an arrest</span></div><div class="mission-divider"></div><div class="suspect-count"><strong id="arrest-count">00</strong><small>ARRESTS</small></div></div>
+      <div class="district-tag"><i></i> OLD HARBOR <span>·</span> SECTOR 07</div>
+      <div class="minimap-frame"><div class="map-label">PATROL MAP <span>N</span></div><canvas id="minimap" width="180" height="180"></canvas><div class="map-footer"><i></i> LIVE DISPATCH <span id="map-units">3 UNITS</span></div></div>
+      <div class="crosshair"><i></i><i></i><i></i><i></i><span></span></div>
+      <div id="toast" class="toast" aria-live="assertive"><span>✳</span><strong id="toast-text">SUSPECT IN SIGHT</strong></div>
+      <div id="interaction" class="interaction hidden"><span class="interaction-key">E</span><span id="interaction-text">ARREST SUSPECT</span></div>
+      <div class="bottom-left"><span class="unit-mark">07</span><div><small>OFFICER</small><strong id="rank">ROOKIE</strong></div><span class="rank-pips"><i class="lit"></i><i></i><i></i><i></i></span></div>
+      <div class="bottom-center"><span id="vehicle-label" class="vehicle-label hidden">PATROL CRUISER <b>·</b> <span id="speed">00</span> MPH</span><span id="controls-hint">WASD MOVE <i>·</i> MOUSE LOOK <i>·</i> CLICK STUN <i>·</i> E ARREST</span></div>
+      <div class="bottom-right"><div class="stun-meter"><span class="meter-icon">ϟ</span><span><small>STUN CHARGE</small><i class="meter-track"><i id="charge-fill"></i></i></span></div><div class="ammo-count"><b id="ammo">∞</b><small>NON-LETHAL<br>CHARGES</small></div></div>
+      <div id="promotion" class="promotion hidden"><span class="promotion-seal">✳</span><small>HARBOR CITY POLICE DEPARTMENT</small><h2>BADGE <em>EARNED.</em></h2><p>You’ve made the city a little safer tonight.</p><button id="continue-button" type="button">BACK TO THE STREETS <span>↗</span></button></div>
+    </section>
+    <div id="touch-controls" class="touch-controls hidden"><div class="touch-pad"><button data-key="w">▲</button><div><button data-key="a">◀</button><button data-key="s">▼</button><button data-key="d">▶</button></div></div><div class="touch-actions"><button id="touch-fire">ϟ</button><button id="touch-use">E</button></div></div>
+    <div id="start-error" class="start-error hidden">Your browser couldn’t start the 3D city. Please try reloading the page.</div>
+    <noscript>This game needs JavaScript to run.</noscript>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
